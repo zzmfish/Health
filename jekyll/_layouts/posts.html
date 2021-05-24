@@ -1,0 +1,33 @@
+---
+layout: archive
+---
+<small>
+  <i class="far fa-calendar-alt" aria-hidden="true"></i>
+  <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
+</small>
+
+<div style="position: relative;">
+  {{ content }}
+
+  <div>
+    <small>
+    {% for tagName in page.tags %}
+      <a href='/Health/tags.html#{{ tagName }}'>🔖{{ tagName }}</a>&nbsp;
+    {% endfor %}
+    </small>
+  </div>
+
+  <aside class="sidebar__right ">
+    <nav class="toc">
+      <header><h4 class="nav__title">Tags</h4></header>
+      <ul class="toc__menu">
+        {% for tag in site.tags %}
+          {% assign tagName = tag | first | downcase %}
+          {% assign postsCount = tag | last | size %}
+          <li><a href='/Health/tags.html#{{ tagName }}'>{{ tagName }} <small style="font-weight: normal;">({{ postsCount }})</small></a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
+</div>
+
